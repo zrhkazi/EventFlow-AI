@@ -146,8 +146,4 @@ Contributions welcome! Some ideas:
 - Soft constraint relaxation with user approval
 - Calendar integration (Google Calendar, Outlook)
 
-### License
-
-MIT — see LICENSE for details.
-
 **Built with pure JavaScript — no frameworks, no APIs, no nonsense.**
