@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventFlow AI — AI-Powered Event Planning</title>
+    <meta name="description" content="Agentic AI system for dynamic event scheduling with constraint satisfaction, multi-agent optimization, and real-time re-planning.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- ===== LEFT NAV PANEL ===== -->
+    <div class="left-panel">
+        <div class="nav-pill top">
+            <div class="nav-dark-pill top">
+                <svg class="app-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.264 2.205A4 4 0 0 0 6.42 4.211l-4 8a4 4 0 0 0 1.359 5.117l6 4a4 4 0 0 0 4.438 0l6-4a4 4 0 0 0 1.576-4.592l-2-6a4 4 0 0 0-2.53-2.53z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11.99 22 14 12l7.822 3.184" stroke="currentColor" stroke-width="1"/>
+                    <path d="M14 12 8.47 2.302" stroke="currentColor" stroke-width="1"/>
+                </svg>
+                <div class="pill-separator"></div>
+                <div class="nav-items-container">
+                    <button class="nav-icon-btn active" data-view="dashboard" title="Dashboard">
+                        <span class="material-symbols-outlined">space_dashboard</span>
+                    </button>
+                    <button class="nav-icon-btn" data-view="speakers" title="Speakers">
+                        <span class="material-symbols-outlined">record_voice_over</span>
+                    </button>
+                    <button class="nav-icon-btn" data-view="venues" title="Venues">
+                        <span class="material-symbols-outlined">meeting_room</span>
+                    </button>
+                    <button class="nav-icon-btn" data-view="timeslots" title="Time Slots">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                    </button>
+                    <button class="nav-icon-btn" data-view="attendees" title="Attendees">
+                        <span class="material-symbols-outlined">groups</span>
+                    </button>
+                    <button class="nav-icon-btn" data-view="budget" title="Budget">
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                    </button>
+                    <button class="nav-icon-btn" data-view="log" title="Agent Log">
+                        <span class="material-symbols-outlined">clinical_notes</span>
+                    </button>
+                </div>
+            </div>
+            <div style="flex:1"></div>
+            <div class="vertical-brand-text">EventFlow AI</div>
+        </div>
+        <div class="nav-pill bottom">
+            <button class="nav-icon-btn dark-mode-btn" onclick="App.toggleDarkMode()" title="Toggle Dark Mode">
+                <span class="material-symbols-outlined" style="color:#222528;font-size:26px">dark_mode</span>
+            </button>
+            <div class="nav-dark-pill bottom-pill">
+                <button class="nav-icon-btn" onclick="App.toggleChat()" id="chatToggleNav" title="AI Chat">
+                    <span class="material-symbols-outlined">forum</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MAIN WINDOW ===== -->
+    <div class="main-window">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="appSidebar">
+            <div class="window-controls">
+                <div class="control-dot dot-close"></div>
+                <div class="control-dot dot-min"></div>
+                <div class="control-dot dot-max"></div>
+            </div>
+            <div class="profile-wrapper">
+                <div class="sidebar-profile-drop"></div>
+                <div class="profile-info">
+                    <div class="profile-name neue">EventFlow AI</div>
+                    <div class="profile-email">agent@eventflow.ai</div>
+                </div>
+            </div>
+
+            <!-- CoT Reasoning Panel -->
+            <div class="sidebar-section cot-section">
+                <div class="sidebar-section-title">
+                    <span class="material-symbols-outlined" style="font-size:16px">psychology</span>
+                    <span>Scheduler Reasoning</span>
+                </div>
+                <div id="cotPanel" class="cot-scroll">
+                    <p class="cot-empty">Create or manage an event to see AI reasoning.</p>
+                </div>
+            </div>
+
+            <!-- Tools Section -->
+            <div class="sidebar-section tools-section" id="toolsSection">
+                <div class="sidebar-section-title">
+                    <span class="material-symbols-outlined" style="font-size:16px">build</span>
+                    <span>Tools & Simulation</span>
+                </div>
+                <div class="tools-grid">
+                    <button class="sim-btn undo-btn" onclick="App.undo()" id="undoBtn" disabled>
+                        <span class="material-symbols-outlined" style="font-size:16px">undo</span> Undo
+                    </button>
+                    <button class="sim-btn export-btn" onclick="App.exportJSON()">
+                        <span class="material-symbols-outlined" style="font-size:16px">download</span> Export
+                    </button>
+                    <button class="sim-btn import-btn" onclick="App.importJSON()">
+                        <span class="material-symbols-outlined" style="font-size:16px">upload</span> Import
+                    </button>
+                    <button class="sim-btn back-btn" onclick="App.backToEvents()" id="backBtn" style="display:none">
+                        <span class="material-symbols-outlined" style="font-size:16px">arrow_back</span> Back to Events
+                    </button>
+                    <div class="history-count" id="historyCount">No history</div>
+                    <button class="sim-btn" style="background:rgba(214,48,49,.1);color:var(--red);justify-content:center;margin-top:4px" onclick="App.logout()">
+                        <span class="material-symbols-outlined" style="font-size:16px">logout</span> Sign Out
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTENT AREA -->
+        <main class="content" id="mainContent">
+            <!-- TIMELINE VIEW (default) -->
+            <div id="timeline-view">
+                <div class="events-header">
+                    <div class="events-title neue">Events</div>
+                    <div class="view-toggle">
+                        <button id="btn-upcoming" class="toggle-btn active glow" onclick="App.switchTimelineTab('upcoming')">Upcoming</button>
+                        <button id="btn-past" class="toggle-btn" onclick="App.switchTimelineTab('past')">Past</button>
+                    </div>
+                </div>
+                <div id="view-upcoming" class="timeline-scroll">
+                    <div id="upcoming-timeline" class="timeline-container"></div>
+                    <div class="create-btn-wrapper">
+                        <button class="create-btn" onclick="App.openWizard()">
+                            <span class="material-symbols-outlined" style="font-size:20px">add</span>
+                            Create Event
+                        </button>
+                    </div>
+                </div>
+                <div id="view-past" class="timeline-scroll" style="display:none">
+                    <div id="past-timeline" class="timeline-container"></div>
+                    <div id="past-empty" class="empty-state" style="display:none">No past events.</div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD VIEW (when managing an event) -->
+            <div id="dashboard-view" style="display:none">
+                <div class="dash-header">
+                    <h1 id="viewTitle" class="neue">Dashboard <span class="badge">LIVE</span></h1>
+                    <button class="back-to-events-btn" onclick="App.backToEvents()">
+                        <span class="material-symbols-outlined" style="font-size:16px">arrow_back</span> Events
+                    </button>
+                </div>
+                <div class="dash-body" id="contentBody"></div>
+            </div>
+
+            <!-- Progress Overlay -->
+            <div class="progress-overlay" id="progressOverlay">
+                <div class="spinner"></div>
+                <div class="progress-text">Re-optimizing schedule...</div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- ===== EVENT CREATION MODAL (7-step wizard) ===== -->
+<div id="event-modal" class="wizard-overlay">
+    <div class="wizard-card">
+        <!-- Wizard Header -->
+        <div class="wiz-header">
+            <div class="wiz-header-left">
+                <h2 id="modal-title" class="neue">Create Event</h2>
+            </div>
+            <div class="modal-toggle">
+                <button id="mod-pub" class="modal-toggle-btn active" onclick="App.wiz.setVisibility('Public')">Public</button>
+                <button id="mod-priv" class="modal-toggle-btn" onclick="App.wiz.setVisibility('Private')">Private</button>
+            </div>
+        </div>
+
+        <!-- Wizard Body -->
+        <div class="wiz-body" id="wiz-scroll-area">
+            <input type="hidden" id="wiz-ev-id">
+
+            <!-- Event Name + Type -->
+            <section class="wiz-name-section">
+                <input id="wiz-event-name" class="wiz-name-input neue" placeholder="Event Name" type="text"/>
+                <div class="wiz-type-row">
+                    <select id="wiz-event-type" class="wiz-type-select">
+                        <option value="conference">Conference / Summit</option>
+                        <option value="hackathon">Hackathon</option>
+                        <option value="festival">Festival</option>
+                        <option value="workshop">Workshop</option>
+                        <option value="corporate">Corporate Event</option>
+                        <option value="custom">Custom Event</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Progress Bar -->
+            <div class="wiz-progress-bar-wrap">
+                <div class="wiz-progress-track">
+                    <div id="wiz-progress-bar" class="wiz-progress-fill" style="width:14.28%"></div>
+                </div>
+            </div>
+
+            <!-- Breadcrumb Nav -->
+            <nav class="wiz-breadcrumb" id="wiz-breadcrumb-nav"></nav>
+
+            <!-- STEP 1: Event Basics -->
+            <div class="step-panel active" id="step-1">
+                <div class="step-heading">
+                    <h2 class="neue">Event Basics</h2>
+                    <p>Start with the when, where, and budget.</p>
+                </div>
+                <div class="wiz-date-grid">
+                    <div class="wiz-field-group">
+                        <label class="wiz-label">Start Date</label>
+                        <div class="wiz-field-row"><span class="material-symbols-outlined wiz-field-icon">event</span>
+                        <input type="date" id="wiz-start-date" class="wiz-field-input"/></div>
+                    </div>
+                    <div class="wiz-field-group">
+                        <label class="wiz-label">Start Time</label>
+                        <div class="wiz-field-row"><span class="material-symbols-outlined wiz-field-icon">schedule</span>
+                        <input type="time" id="wiz-start-time" value="09:00" class="wiz-field-input"/></div>
+                    </div>
+                    <div class="wiz-field-group">
+                        <label class="wiz-label">End Date</label>
+                        <div class="wiz-field-row"><span class="material-symbols-outlined wiz-field-icon">event</span>
+                        <input type="date" id="wiz-end-date" class="wiz-field-input"/></div>
+                    </div>
+                    <div class="wiz-field-group">
+                        <label class="wiz-label">End Time</label>
+                        <div class="wiz-field-row"><span class="material-symbols-outlined wiz-field-icon">schedule</span>
+                        <input type="time" id="wiz-end-time" value="17:00" class="wiz-field-input"/></div>
+                    </div>
+                </div>
+                <div class="wiz-box">
+                    <span class="material-symbols-outlined wiz-field-icon">location_on</span>
+                    <div class="wiz-box-content">
+                        <label class="wiz-label">Location</label>
+                        <input id="wiz-event-loc" class="wiz-field-input" placeholder="Add event location or virtual link" type="text"/>
+                    </div>
+                </div>
+                <div class="wiz-box">
+                    <span class="material-symbols-outlined wiz-field-icon">description</span>
+                    <div class="wiz-box-content">
+                        <label class="wiz-label">Description</label>
+                        <textarea id="wiz-event-desc" class="wiz-field-input" placeholder="What's this event about?" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="wiz-list-row">
+                    <div class="wiz-list-left"><span class="material-symbols-outlined">payments</span><span class="neue">Budget</span></div>
+                    <div class="wiz-list-right">
+                        <span class="wiz-currency">₹</span>
+                        <input type="number" id="wiz-total-budget" placeholder="0" class="wiz-budget-input"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 2: Time Slots -->
+            <div class="step-panel" id="step-2">
+                <div class="step-heading">
+                    <h2 class="neue">Time Slots</h2>
+                    <p>Define scheduling slots for sessions. The AI solver assigns speakers to these.</p>
+                </div>
+                <div id="wiz-timeslots-list" class="wiz-entity-list"></div>
+                <div class="wiz-add-box">
+                    <div class="wiz-add-box-row"><span class="material-symbols-outlined wiz-icon-gold">calendar_month</span>
+                        <input type="date" id="wiz-ts-date" class="wiz-field-input" style="flex:1"/></div>
+                    <div class="wiz-add-grid-2">
+                        <div><label class="wiz-label">Start Time</label>
+                            <input type="time" id="wiz-ts-start" value="09:00" class="wiz-field-input"/></div>
+                        <div><label class="wiz-label">End Time</label>
+                            <input type="time" id="wiz-ts-end" value="10:00" class="wiz-field-input"/></div>
+                    </div>
+                    <div><label class="wiz-label">Label (optional)</label>
+                        <input id="wiz-ts-label" class="wiz-field-input" placeholder="Auto-generated from time"/></div>
+                    <button onclick="App.wiz.addTimeSlot()" class="wiz-add-btn">
+                        <span class="material-symbols-outlined wiz-icon-gold">add_circle</span> Add Time Slot</button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Rooms & Venues -->
+            <div class="step-panel" id="step-3">
+                <div class="step-heading">
+                    <h2 class="neue">Rooms & Venues</h2>
+                    <p>Add all spaces available. Include capacity and cost for AI optimization.</p>
+                </div>
+                <div id="wiz-rooms-list" class="wiz-entity-list"></div>
+                <div class="wiz-add-box">
+                    <div class="wiz-add-box-row"><span class="material-symbols-outlined wiz-icon-gold">meeting_room</span>
+                        <input id="wiz-room-name" class="wiz-field-input neue" placeholder="Room name — e.g. Main Hall" style="flex:1"/></div>
+                    <div class="wiz-add-grid-2">
+                        <div><label class="wiz-label">Capacity</label>
+                            <input type="number" id="wiz-room-cap-display" class="wiz-field-input" value="50" min="1" onchange="App.wiz.roomCap=parseInt(this.value)||1"/></div>
+                        <div><label class="wiz-label">Cost / Hour ($)</label>
+                            <input type="number" id="wiz-room-cost" class="wiz-field-input" value="100" min="0"/></div>
+                    </div>
+                    <div><label class="wiz-label">Location / Zone</label>
+                        <input id="wiz-room-location" class="wiz-field-input" placeholder="e.g. Ground Floor"/></div>
+                    <div><label class="wiz-label">Equipment</label>
+                        <div class="wiz-chips" id="wiz-equipment-tags"></div></div>
+                    <div id="wiz-room-slots-wrap" style="display:none">
+                        <label class="wiz-label">Available Time Slots</label>
+                        <div class="wiz-checkbox-grid" id="wiz-room-avail-slots"></div>
+                    </div>
+                    <button onclick="App.wiz.addRoom()" class="wiz-add-btn">
+                        <span class="material-symbols-outlined wiz-icon-gold">add_circle</span> Add Room</button>
+                </div>
+            </div>
+
+            <!-- STEP 4: Speakers -->
+            <div class="step-panel" id="step-4">
+                <div class="step-heading">
+                    <h2 class="neue">Speakers & Presenters</h2>
+                    <p>Add speakers with fees and preferred time slots for optimal scheduling.</p>
+                </div>
+                <div id="wiz-speakers-list" class="wiz-entity-list"></div>
+                <div class="wiz-add-box">
+                    <div class="wiz-add-box-row"><span class="material-symbols-outlined wiz-icon-gold">person</span>
+                        <input id="wiz-speaker-name" class="wiz-field-input neue" placeholder="Speaker name" style="flex:1"/></div>
+                    <div class="wiz-add-grid-2">
+                        <div><label class="wiz-label">Topic</label>
+                            <input id="wiz-speaker-topic" class="wiz-field-input" placeholder="e.g. Future of AI"/></div>
+                        <div><label class="wiz-label">Duration (min)</label>
+                            <input type="number" id="wiz-spk-dur-display" class="wiz-field-input" value="45" min="1" onchange="App.wiz.spkDur=parseInt(this.value)||15"/></div>
+                    </div>
+                    <div class="wiz-add-grid-2">
+                        <div><label class="wiz-label">Fee ($)</label>
+                            <input type="number" id="wiz-speaker-fee" class="wiz-field-input" value="500" min="0"/></div>
+                        <div></div>
+                    </div>
+                    <div id="wiz-spk-slots-wrap" style="display:none">
+                        <label class="wiz-label">Preferred Time Slots</label>
+                        <div class="wiz-checkbox-grid" id="wiz-spk-pref-slots"></div>
+                    </div>
+                    <div id="wiz-members-container"></div>
+                    <button onclick="App.wiz.addMemberRow()" class="wiz-add-btn-secondary" style="margin-bottom:8px">
+                        <span class="material-symbols-outlined" style="font-size:16px">person_add</span> Add Team Member</button>
+                    <button onclick="App.wiz.addSpeaker()" class="wiz-add-btn">
+                        <span class="material-symbols-outlined wiz-icon-gold">add_circle</span> Add Speaker</button>
+                </div>
+            </div>
+
+            <!-- STEP 5: Attendees -->
+            <div class="step-panel" id="step-5">
+                <div class="step-heading">
+                    <h2 class="neue">Attendees</h2>
+                    <p>Add individual attendees with preferences for AI satisfaction scoring.</p>
+                </div>
+                <div id="wiz-attendees-list" class="wiz-entity-list"></div>
+                <div class="wiz-add-box">
+                    <div class="wiz-add-box-row"><span class="material-symbols-outlined wiz-icon-gold">person</span>
+                        <input id="wiz-att-name" class="wiz-field-input neue" placeholder="Attendee name" style="flex:1"/></div>
+                    <div class="wiz-add-grid-2">
+                        <div><label class="wiz-label">VIP Level (0-5)</label>
+                            <input type="number" id="wiz-att-vip" class="wiz-field-input" value="0" min="0" max="5"/></div>
+                        <div><label class="wiz-label">Interests (comma-separated)</label>
+                            <input id="wiz-att-interests" class="wiz-field-input" placeholder="AI, design, music"/></div>
+                    </div>
+                    <div id="wiz-att-spk-wrap" style="display:none">
+                        <label class="wiz-label">Preferred Speakers</label>
+                        <div class="wiz-checkbox-grid" id="wiz-att-pref-speakers"></div>
+                    </div>
+                    <button onclick="App.wiz.addAttendee()" class="wiz-add-btn">
+                        <span class="material-symbols-outlined wiz-icon-gold">add_circle</span> Add Attendee</button>
+                </div>
+            </div>
+
+            <!-- STEP 6: Resources -->
+            <div class="step-panel" id="step-6">
+                <div class="step-heading">
+                    <h2 class="neue">Resources & Inventory</h2>
+                    <p>Track physical resources for your event.</p>
+                </div>
+                <div class="wiz-quick-add">
+                    <label class="wiz-label">Quick Add</label>
+                    <div class="wiz-chips">
+                        <button onclick="App.wiz.quickAddResource('Chairs','pieces')" class="tag-chip"><span class="material-symbols-outlined" style="font-size:14px">chair</span>Chairs</button>
+                        <button onclick="App.wiz.quickAddResource('Lunch Boxes','portions')" class="tag-chip"><span class="material-symbols-outlined" style="font-size:14px">lunch_dining</span>Lunch</button>
+                        <button onclick="App.wiz.quickAddResource('Name Tags','pieces')" class="tag-chip"><span class="material-symbols-outlined" style="font-size:14px">badge</span>Name Tags</button>
+                    </div>
+                </div>
+                <div id="wiz-resources-list" class="wiz-entity-list"></div>
+                <div class="wiz-add-box">
+                    <div class="wiz-add-box-row"><span class="material-symbols-outlined wiz-icon-gold">inventory_2</span>
+                        <input id="wiz-resource-name" class="wiz-field-input neue" placeholder="Resource name" style="flex:1"/></div>
+                    <div class="wiz-add-grid-2">
+                        <div><label class="wiz-label">Quantity</label>
+                            <input type="number" id="wiz-res-qty-display" class="wiz-field-input" value="10" min="0" onchange="App.wiz.resQty=parseInt(this.value)||0"/></div>
+                        <div><label class="wiz-label">Unit</label>
+                            <select id="wiz-resource-unit" class="wiz-field-input wiz-select">
+                                <option>pieces</option><option>portions</option><option>sets</option><option>liters</option>
+                            </select></div>
+                    </div>
+                    <button onclick="App.wiz.addResource()" class="wiz-add-btn">
+                        <span class="material-symbols-outlined wiz-icon-gold">add_circle</span> Add Resource</button>
+                </div>
+            </div>
+
+            <!-- STEP 7: Review & Generate -->
+            <div class="step-panel" id="step-7">
+                <div class="step-heading">
+                    <h2 class="neue">Review & Generate Schedule</h2>
+                    <p>Review your event data. The AI will generate the optimal schedule.</p>
+                </div>
+                <div id="wiz-review-summary" class="wiz-entity-list"></div>
+            </div>
+        </div>
+
+        <!-- Wizard Footer -->
+        <div class="wiz-footer">
+            <button onclick="App.wiz.prev()" id="wiz-btn-prev" class="wiz-footer-btn wiz-btn-back">
+                <span class="material-symbols-outlined" style="font-size:16px">arrow_back</span> Back
+            </button>
+            <div class="wiz-footer-right">
+                <button onclick="App.closeWizard()" class="wiz-footer-btn wiz-btn-cancel">Cancel</button>
+                <button onclick="App.wiz.next()" id="wiz-btn-next" class="wiz-footer-btn wiz-btn-continue">
+                    Continue <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+                </button>
+                <button onclick="App.wiz.saveEvent()" id="wiz-btn-save" class="wiz-footer-btn wiz-btn-save" style="display:none">
+                    <span class="material-symbols-outlined" style="font-size:16px">auto_awesome</span> Generate Schedule
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== CRUD MODAL OVERLAY ===== -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- ===== CHATBOT ===== -->
+<div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+        <div class="chat-header-dot"></div>
+        <h4>EventFlow AI Assistant</h4>
+        <span>Online</span>
+        <button class="chat-close-btn" onclick="App.toggleChat()">
+            <span class="material-symbols-outlined" style="font-size:18px">close</span>
+        </button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg bot"><div class="bot-label">AI Assistant</div>Hi! I'm your EventFlow AI assistant. Ask me anything about your event — speakers, venues, budget, scheduling, or how to use any feature.</div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')App.sendChat()">
+        <button class="chat-send" onclick="App.sendChat()">
+            <span class="material-symbols-outlined" style="font-size:18px">send</span>
+        </button>
+    </div>
+</div>
+
+<!-- ===== TOAST CONTAINER ===== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ===== SCRIPTS (modular) ===== -->
+<script src="js/engine.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/wizard.js"></script>
+<script src="js/chatbot.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

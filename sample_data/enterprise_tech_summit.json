@@ -1,0 +1,258 @@
+{
+  "events": [
+    {
+      "id": "evt_enterprise_summit_2026",
+      "name": "Global Tech Summit 2026",
+      "eventType": "conference",
+      "date": "2026-04-15",
+      "time": "08:00",
+      "endDate": "2026-04-17",
+      "endTime": "18:00",
+      "location": "Hyderabad International Convention Centre (HICC), India",
+      "description": "A 3-day flagship technology conference featuring 15 world-class speakers across 6 venues, covering AI, Cloud, Cybersecurity, DevOps, Blockchain, and Quantum Computing. Designed for enterprise leaders, architects, and developers.",
+      "visibility": "Public",
+      "timeSlots": [
+        { "id": "ts_d1_0900", "label": "9:00 AM",  "day": "2026-04-15", "start": "09:00", "end": "10:00" },
+        { "id": "ts_d1_1015", "label": "10:15 AM", "day": "2026-04-15", "start": "10:15", "end": "11:15" },
+        { "id": "ts_d1_1130", "label": "11:30 AM", "day": "2026-04-15", "start": "11:30", "end": "12:30" },
+        { "id": "ts_d1_1400", "label": "2:00 PM",  "day": "2026-04-15", "start": "14:00", "end": "15:00" },
+        { "id": "ts_d1_1515", "label": "3:15 PM",  "day": "2026-04-15", "start": "15:15", "end": "16:15" },
+        { "id": "ts_d1_1630", "label": "4:30 PM",  "day": "2026-04-15", "start": "16:30", "end": "17:30" },
+
+        { "id": "ts_d2_0900", "label": "9:00 AM",  "day": "2026-04-16", "start": "09:00", "end": "10:00" },
+        { "id": "ts_d2_1015", "label": "10:15 AM", "day": "2026-04-16", "start": "10:15", "end": "11:15" },
+        { "id": "ts_d2_1130", "label": "11:30 AM", "day": "2026-04-16", "start": "11:30", "end": "12:30" },
+        { "id": "ts_d2_1400", "label": "2:00 PM",  "day": "2026-04-16", "start": "14:00", "end": "15:00" },
+        { "id": "ts_d2_1515", "label": "3:15 PM",  "day": "2026-04-16", "start": "15:15", "end": "16:15" },
+        { "id": "ts_d2_1630", "label": "4:30 PM",  "day": "2026-04-16", "start": "16:30", "end": "17:30" },
+
+        { "id": "ts_d3_0900", "label": "9:00 AM",  "day": "2026-04-17", "start": "09:00", "end": "10:00" },
+        { "id": "ts_d3_1015", "label": "10:15 AM", "day": "2026-04-17", "start": "10:15", "end": "11:15" },
+        { "id": "ts_d3_1130", "label": "11:30 AM", "day": "2026-04-17", "start": "11:30", "end": "12:30" },
+        { "id": "ts_d3_1400", "label": "2:00 PM",  "day": "2026-04-17", "start": "14:00", "end": "15:00" },
+        { "id": "ts_d3_1515", "label": "3:15 PM",  "day": "2026-04-17", "start": "15:15", "end": "16:15" },
+        { "id": "ts_d3_1630", "label": "4:30 PM",  "day": "2026-04-17", "start": "16:30", "end": "17:30" }
+      ],
+      "venues": [
+        {
+          "id": "v_grand_hall",
+          "name": "Grand Auditorium",
+          "capacity": 500,
+          "costPerHour": 2500,
+          "location": "Level 1 — Main Building",
+          "equipment": ["projector", "microphone", "stage", "lighting", "streaming", "recording"],
+          "availableSlots": ["ts_d1_0900","ts_d1_1015","ts_d1_1130","ts_d1_1400","ts_d1_1515","ts_d1_1630","ts_d2_0900","ts_d2_1015","ts_d2_1130","ts_d2_1400","ts_d2_1515","ts_d2_1630","ts_d3_0900","ts_d3_1015","ts_d3_1130","ts_d3_1400","ts_d3_1515","ts_d3_1630"]
+        },
+        {
+          "id": "v_hall_a",
+          "name": "Innovation Hub A",
+          "capacity": 200,
+          "costPerHour": 1200,
+          "location": "Level 2 — East Wing",
+          "equipment": ["projector", "microphone", "whiteboard", "monitors", "wifi"],
+          "availableSlots": ["ts_d1_0900","ts_d1_1015","ts_d1_1130","ts_d1_1400","ts_d1_1515","ts_d1_1630","ts_d2_0900","ts_d2_1015","ts_d2_1130","ts_d2_1400","ts_d2_1515","ts_d2_1630","ts_d3_0900","ts_d3_1015","ts_d3_1130","ts_d3_1400","ts_d3_1515","ts_d3_1630"]
+        },
+        {
+          "id": "v_hall_b",
+          "name": "Innovation Hub B",
+          "capacity": 200,
+          "costPerHour": 1200,
+          "location": "Level 2 — West Wing",
+          "equipment": ["projector", "microphone", "whiteboard", "monitors", "wifi"],
+          "availableSlots": ["ts_d1_0900","ts_d1_1015","ts_d1_1130","ts_d1_1400","ts_d1_1515","ts_d1_1630","ts_d2_0900","ts_d2_1015","ts_d2_1130","ts_d2_1400","ts_d2_1515","ts_d2_1630","ts_d3_0900","ts_d3_1015","ts_d3_1130","ts_d3_1400","ts_d3_1515","ts_d3_1630"]
+        },
+        {
+          "id": "v_workshop_1",
+          "name": "Workshop Lab 1",
+          "capacity": 80,
+          "costPerHour": 600,
+          "location": "Level 3 — Lab Block",
+          "equipment": ["projector", "whiteboard", "monitors", "power-strips", "wifi"],
+          "availableSlots": ["ts_d1_0900","ts_d1_1015","ts_d1_1130","ts_d1_1400","ts_d1_1515","ts_d1_1630","ts_d2_0900","ts_d2_1015","ts_d2_1130","ts_d2_1400","ts_d2_1515","ts_d2_1630","ts_d3_0900","ts_d3_1015","ts_d3_1130","ts_d3_1400","ts_d3_1515","ts_d3_1630"]
+        },
+        {
+          "id": "v_workshop_2",
+          "name": "Workshop Lab 2",
+          "capacity": 60,
+          "costPerHour": 500,
+          "location": "Level 3 — Lab Block",
+          "equipment": ["projector", "whiteboard", "monitors", "power-strips", "wifi"],
+          "availableSlots": ["ts_d1_0900","ts_d1_1015","ts_d1_1130","ts_d1_1400","ts_d1_1515","ts_d1_1630","ts_d2_0900","ts_d2_1015","ts_d2_1130","ts_d2_1400","ts_d2_1515","ts_d2_1630","ts_d3_0900","ts_d3_1015","ts_d3_1130","ts_d3_1400","ts_d3_1515","ts_d3_1630"]
+        },
+        {
+          "id": "v_exec_suite",
+          "name": "Executive Boardroom",
+          "capacity": 30,
+          "costPerHour": 800,
+          "location": "Level 5 — Executive Floor",
+          "equipment": ["projector", "microphone", "monitors", "recording", "wifi"],
+          "availableSlots": ["ts_d1_0900","ts_d1_1015","ts_d1_1130","ts_d1_1400","ts_d1_1515","ts_d1_1630","ts_d2_0900","ts_d2_1015","ts_d2_1130","ts_d2_1400","ts_d2_1515","ts_d2_1630","ts_d3_0900","ts_d3_1015","ts_d3_1130","ts_d3_1400","ts_d3_1515","ts_d3_1630"]
+        }
+      ],
+      "speakers": [
+        {
+          "id": "spk_01", "name": "Dr. Arvind Krishnamurthy", "topic": "Scaling Enterprise AI: From Proof-of-Concept to Production",
+          "duration": 55, "fee": 8000,
+          "preferredSlots": ["ts_d1_0900", "ts_d1_1015", "ts_d2_0900"],
+          "members": [
+            { "name": "Priya Sharma", "roll": "RA-2024-001", "phone": "+91-9876543210", "email": "priya.s@techcorp.in" },
+            { "name": "Ravi Patel", "roll": "RA-2024-002", "phone": "+91-9876543211", "email": "ravi.p@techcorp.in" }
+          ]
+        },
+        {
+          "id": "spk_02", "name": "Sarah Chen", "topic": "Zero-Trust Architecture for Multi-Cloud Environments",
+          "duration": 50, "fee": 7500,
+          "preferredSlots": ["ts_d1_1015", "ts_d1_1130", "ts_d2_1015"],
+          "members": [
+            { "name": "James Liu", "roll": "SEC-001", "phone": "+1-555-0101", "email": "j.liu@securecloud.io" }
+          ]
+        },
+        {
+          "id": "spk_03", "name": "Prof. Heinrich Müller", "topic": "Quantum Computing: Breaking RSA and Post-Quantum Cryptography",
+          "duration": 60, "fee": 12000,
+          "preferredSlots": ["ts_d1_0900", "ts_d1_1015", "ts_d1_1130"],
+          "members": []
+        },
+        {
+          "id": "spk_04", "name": "Ananya Desai", "topic": "Platform Engineering: Building Golden Paths for Developer Productivity",
+          "duration": 45, "fee": 5500,
+          "preferredSlots": ["ts_d1_1400", "ts_d1_1515", "ts_d2_1400", "ts_d2_1515"],
+          "members": [
+            { "name": "Karthik Reddy", "roll": "PE-001", "phone": "+91-9123456780", "email": "karthik@devplatform.io" },
+            { "name": "Meera Nair", "roll": "PE-002", "phone": "+91-9123456781", "email": "meera@devplatform.io" },
+            { "name": "Aditya Gupta", "roll": "PE-003", "phone": "+91-9123456782", "email": "aditya@devplatform.io" }
+          ]
+        },
+        {
+          "id": "spk_05", "name": "Marcus Johnson", "topic": "LLM Ops: Observability, Guardrails, and Cost Control at Scale",
+          "duration": 50, "fee": 9000,
+          "preferredSlots": ["ts_d1_1130", "ts_d2_0900", "ts_d2_1015"],
+          "members": []
+        },
+        {
+          "id": "spk_06", "name": "Dr. Fatima Al-Rashid", "topic": "Federated Learning for Privacy-Preserving Healthcare AI",
+          "duration": 55, "fee": 10000,
+          "preferredSlots": ["ts_d2_0900", "ts_d2_1015", "ts_d2_1130"],
+          "members": [
+            { "name": "Omar Hassan", "roll": "FL-001", "phone": "+971-50-1234567", "email": "omar@healthai.ae" }
+          ]
+        },
+        {
+          "id": "spk_07", "name": "Takeshi Yamamoto", "topic": "Edge-Native Kubernetes: Running ML Inference at 5ms Latency",
+          "duration": 45, "fee": 7000,
+          "preferredSlots": ["ts_d1_1400", "ts_d1_1515", "ts_d2_1400"],
+          "members": []
+        },
+        {
+          "id": "spk_08", "name": "Elena Volkov", "topic": "Supply Chain Resilience: Blockchain-Verified Digital Twins",
+          "duration": 50, "fee": 6500,
+          "preferredSlots": ["ts_d2_1130", "ts_d2_1400", "ts_d2_1515"],
+          "members": [
+            { "name": "Dmitri Petrov", "roll": "BC-001", "phone": "+7-999-123-4567", "email": "d.petrov@chainverify.ru" },
+            { "name": "Natasha Ivanova", "roll": "BC-002", "phone": "+7-999-123-4568", "email": "n.ivanova@chainverify.ru" }
+          ]
+        },
+        {
+          "id": "spk_09", "name": "Rajesh Sundaram", "topic": "Chaos Engineering: Breaking Production to Build Resilient Systems",
+          "duration": 45, "fee": 5000,
+          "preferredSlots": ["ts_d1_1630", "ts_d2_1630", "ts_d3_0900"],
+          "members": []
+        },
+        {
+          "id": "spk_10", "name": "Dr. Ming Wei", "topic": "Neuromorphic Chips: Hardware-Accelerated AI Beyond GPUs",
+          "duration": 55, "fee": 11000,
+          "preferredSlots": ["ts_d3_0900", "ts_d3_1015", "ts_d3_1130"],
+          "members": [
+            { "name": "Li Jing", "roll": "HW-001", "phone": "+86-138-0000-0001", "email": "lijing@neurochip.cn" }
+          ]
+        },
+        {
+          "id": "spk_11", "name": "Isabella Rodriguez", "topic": "Responsible AI Governance: Audit Frameworks for Enterprise",
+          "duration": 50, "fee": 6000,
+          "preferredSlots": ["ts_d3_1015", "ts_d3_1130", "ts_d3_1400"],
+          "members": []
+        },
+        {
+          "id": "spk_12", "name": "Vikram Mehta", "topic": "Real-Time Data Mesh: Event-Driven Architecture with Apache Flink",
+          "duration": 45, "fee": 5500,
+          "preferredSlots": ["ts_d2_1515", "ts_d2_1630", "ts_d3_1400"],
+          "members": [
+            { "name": "Sneha Kulkarni", "roll": "DM-001", "phone": "+91-9988776655", "email": "sneha@datamesh.dev" }
+          ]
+        },
+        {
+          "id": "spk_13", "name": "Grace Okafor", "topic": "Digital Identity: Self-Sovereign Identity on Web5",
+          "duration": 50, "fee": 7000,
+          "preferredSlots": ["ts_d3_1400", "ts_d3_1515", "ts_d3_1630"],
+          "members": []
+        },
+        {
+          "id": "spk_14", "name": "Alexandre Dubois", "topic": "Green Computing: Carbon-Aware Scheduling for Data Centers",
+          "duration": 45, "fee": 6000,
+          "preferredSlots": ["ts_d1_1515", "ts_d1_1630", "ts_d3_1515"],
+          "members": [
+            { "name": "Sophie Martin", "roll": "GC-001", "phone": "+33-6-12345678", "email": "sophie@greendc.eu" },
+            { "name": "Pierre Laurent", "roll": "GC-002", "phone": "+33-6-12345679", "email": "pierre@greendc.eu" }
+          ]
+        },
+        {
+          "id": "spk_15", "name": "Dr. Kenji Tanaka", "topic": "Autonomous Systems: Safety Verification for Self-Driving Fleets",
+          "duration": 55, "fee": 9500,
+          "preferredSlots": ["ts_d3_1130", "ts_d3_1400", "ts_d3_1515"],
+          "members": []
+        }
+      ],
+      "attendees": [
+        { "id": "att_01", "name": "Suresh Venkataraman (CTO, Infosys)", "vipLevel": 5, "interests": ["AI", "cloud", "quantum"], "preferredSpeakers": ["spk_01", "spk_03", "spk_10"] },
+        { "id": "att_02", "name": "Lisa Wang (VP Eng, Google Cloud)", "vipLevel": 5, "interests": ["AI", "kubernetes", "platform engineering"], "preferredSpeakers": ["spk_01", "spk_05", "spk_07"] },
+        { "id": "att_03", "name": "Ahmed Khan (CISO, TCS)", "vipLevel": 5, "interests": ["cybersecurity", "zero-trust", "governance"], "preferredSpeakers": ["spk_02", "spk_11", "spk_13"] },
+        { "id": "att_04", "name": "Maria Santos (CIO, Wipro)", "vipLevel": 4, "interests": ["digital transformation", "AI", "supply chain"], "preferredSpeakers": ["spk_01", "spk_06", "spk_08"] },
+        { "id": "att_05", "name": "David Kim (Sr. Architect, Samsung)", "vipLevel": 4, "interests": ["edge computing", "neuromorphic", "hardware"], "preferredSpeakers": ["spk_07", "spk_10", "spk_15"] },
+        { "id": "att_06", "name": "Priyanka Joshi (Dir. ML, Flipkart)", "vipLevel": 4, "interests": ["LLM", "data mesh", "AI ops"], "preferredSpeakers": ["spk_05", "spk_12", "spk_01"] },
+        { "id": "att_07", "name": "Robert Fischer (VP, Siemens Digital)", "vipLevel": 4, "interests": ["digital twins", "green computing", "IoT"], "preferredSpeakers": ["spk_08", "spk_14", "spk_15"] },
+        { "id": "att_08", "name": "Nandini Rao (Lead SRE, PhonePe)", "vipLevel": 3, "interests": ["chaos engineering", "platform engineering", "SRE"], "preferredSpeakers": ["spk_09", "spk_04", "spk_07"] },
+        { "id": "att_09", "name": "James Thompson (Architect, AWS)", "vipLevel": 3, "interests": ["cloud", "serverless", "data mesh"], "preferredSpeakers": ["spk_02", "spk_12", "spk_04"] },
+        { "id": "att_10", "name": "Harini Pillai (Product Lead, Razorpay)", "vipLevel": 3, "interests": ["blockchain", "fintech", "identity"], "preferredSpeakers": ["spk_08", "spk_13", "spk_02"] },
+        { "id": "att_11", "name": "Chen Wei (Principal Eng, Huawei)", "vipLevel": 3, "interests": ["5G", "edge", "neuromorphic"], "preferredSpeakers": ["spk_07", "spk_10", "spk_03"] },
+        { "id": "att_12", "name": "Deepika Sharma (Data Scientist, Jio)", "vipLevel": 2, "interests": ["AI", "federated learning", "privacy"], "preferredSpeakers": ["spk_06", "spk_01", "spk_11"] },
+        { "id": "att_13", "name": "Michael O'Brien (DevOps Lead, Atlassian)", "vipLevel": 2, "interests": ["DevOps", "platform engineering", "chaos"], "preferredSpeakers": ["spk_04", "spk_09", "spk_14"] },
+        { "id": "att_14", "name": "Kavitha Rangan (Security Analyst, NPCI)", "vipLevel": 2, "interests": ["cybersecurity", "quantum", "identity"], "preferredSpeakers": ["spk_02", "spk_03", "spk_13"] },
+        { "id": "att_15", "name": "Tomoko Hayashi (Researcher, NTT)", "vipLevel": 2, "interests": ["quantum", "neuromorphic", "autonomous"], "preferredSpeakers": ["spk_03", "spk_10", "spk_15"] },
+        { "id": "att_16", "name": "Arnav Singhania (Intern, Microsoft)", "vipLevel": 0, "interests": ["AI", "LLM", "open source"], "preferredSpeakers": ["spk_01", "spk_05"] },
+        { "id": "att_17", "name": "Fatima Zahra (Grad Student, IIT-H)", "vipLevel": 0, "interests": ["federated learning", "healthcare AI"], "preferredSpeakers": ["spk_06", "spk_11"] },
+        { "id": "att_18", "name": "Rishi Agarwal (Startup Founder, YC)", "vipLevel": 3, "interests": ["blockchain", "Web5", "venture"], "preferredSpeakers": ["spk_13", "spk_08", "spk_12"] },
+        { "id": "att_19", "name": "Sophie Chang (VP Research, NVIDIA)", "vipLevel": 5, "interests": ["neuromorphic", "hardware", "AI"], "preferredSpeakers": ["spk_10", "spk_03", "spk_01"] },
+        { "id": "att_20", "name": "Rahul Dravid Jr. (SDE-2, Zoho)", "vipLevel": 1, "interests": ["data mesh", "platform engineering"], "preferredSpeakers": ["spk_12", "spk_04"] },
+        { "id": "att_21", "name": "Sunita Reddy (Dir. Sustainability, Tata)", "vipLevel": 4, "interests": ["green computing", "ESG", "carbon"], "preferredSpeakers": ["spk_14", "spk_08", "spk_11"] },
+        { "id": "att_22", "name": "Klaus Richter (CTO, BMW Autonomous)", "vipLevel": 5, "interests": ["autonomous vehicles", "safety", "AI"], "preferredSpeakers": ["spk_15", "spk_10", "spk_01"] },
+        { "id": "att_23", "name": "Aishwarya Menon (ML Engineer, Swiggy)", "vipLevel": 1, "interests": ["LLM", "real-time", "inference"], "preferredSpeakers": ["spk_05", "spk_07"] },
+        { "id": "att_24", "name": "Patrick O'Sullivan (CISO, Mastercard)", "vipLevel": 5, "interests": ["zero-trust", "identity", "quantum"], "preferredSpeakers": ["spk_02", "spk_13", "spk_03"] },
+        { "id": "att_25", "name": "Lakshmi Narayan (VP Eng, Freshworks)", "vipLevel": 3, "interests": ["DevOps", "AI ops", "platform"], "preferredSpeakers": ["spk_04", "spk_05", "spk_09"] },
+        { "id": "att_26", "name": "Yusuf Ali (Cloud Architect, Accenture)", "vipLevel": 2, "interests": ["multi-cloud", "kubernetes", "edge"], "preferredSpeakers": ["spk_02", "spk_07", "spk_04"] },
+        { "id": "att_27", "name": "Emma Johansson (Head of AI, Ericsson)", "vipLevel": 4, "interests": ["5G", "edge AI", "federated"], "preferredSpeakers": ["spk_07", "spk_06", "spk_10"] },
+        { "id": "att_28", "name": "Siddharth Malhotra (Staff Eng, Uber)", "vipLevel": 2, "interests": ["chaos engineering", "data mesh", "real-time"], "preferredSpeakers": ["spk_09", "spk_12", "spk_07"] },
+        { "id": "att_29", "name": "Ana Petrova (Blockchain Lead, Polygon)", "vipLevel": 3, "interests": ["blockchain", "Web3", "digital twins"], "preferredSpeakers": ["spk_08", "spk_13", "spk_03"] },
+        { "id": "att_30", "name": "Ganesh Iyer (Head IT, Indian Railways)", "vipLevel": 4, "interests": ["digital transformation", "governance", "security"], "preferredSpeakers": ["spk_11", "spk_02", "spk_14"] }
+      ],
+      "resources": [
+        { "id": "res_01", "name": "Conference Chairs", "qty": 1200, "unit": "pieces" },
+        { "id": "res_02", "name": "Executive Swivel Chairs", "qty": 50, "unit": "pieces" },
+        { "id": "res_03", "name": "Lunch Boxes (Veg)", "qty": 600, "unit": "portions" },
+        { "id": "res_04", "name": "Lunch Boxes (Non-Veg)", "qty": 400, "unit": "portions" },
+        { "id": "res_05", "name": "Tea/Coffee Service", "qty": 1500, "unit": "portions" },
+        { "id": "res_06", "name": "Name Tags + Lanyards", "qty": 1200, "unit": "pieces" },
+        { "id": "res_07", "name": "Conference Kits (Bag+Notepad+Pen)", "qty": 1000, "unit": "sets" },
+        { "id": "res_08", "name": "HDMI Adapters/Dongles", "qty": 30, "unit": "pieces" },
+        { "id": "res_09", "name": "Wireless Presentation Clickers", "qty": 15, "unit": "pieces" },
+        { "id": "res_10", "name": "Bottled Water (500ml)", "qty": 3000, "unit": "pieces" },
+        { "id": "res_11", "name": "Power Extension Cords", "qty": 60, "unit": "pieces" },
+        { "id": "res_12", "name": "Live Streaming Camera Kits", "qty": 6, "unit": "sets" }
+      ],
+      "budget": {
+        "total": 150000
+      },
+      "sessions": [],
+      "satisfaction": null
+    }
+  ]
+}
